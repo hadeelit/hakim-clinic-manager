@@ -6,16 +6,20 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Eye, EyeOff, Lock, User, Shield } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { TwoFactorAuth } from "@/components/ui/two-factor-auth"
 import logo from "@/assets/hakim-logo.png"
 
 interface LoginFormProps {
   onSubmit?: (credentials: { username: string; password: string; rememberMe: boolean }) => void
+  onLoginComplete?: () => void
   className?: string
 }
 
-export function LoginForm({ onSubmit, className }: LoginFormProps) {
+export function LoginForm({ onSubmit, onLoginComplete, className }: LoginFormProps) {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [showTwoFactor, setShowTwoFactor] = useState(false)
+  const [userEmail, setUserEmail] = useState("")
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -26,11 +30,35 @@ export function LoginForm({ onSubmit, className }: LoginFormProps) {
     e.preventDefault()
     setIsLoading(true)
     
-    // Simulate API call
+    // Simulate API call for initial login
     setTimeout(() => {
       onSubmit?.(formData)
+      setUserEmail(formData.username + "@clinic.com") // Simulate user email
+      setShowTwoFactor(true) // Show 2FA step
       setIsLoading(false)
     }, 1000)
+  }
+
+  const handleTwoFactorComplete = (method: string, code: string) => {
+    console.log(`2FA completed with method: ${method}, code: ${code}`)
+    onLoginComplete?.()
+  }
+
+  const handleBackToLogin = () => {
+    setShowTwoFactor(false)
+    setFormData({ username: "", password: "", rememberMe: false })
+  }
+
+  // Show 2FA component if authentication step is completed
+  if (showTwoFactor) {
+    return (
+      <TwoFactorAuth
+        userEmail={userEmail}
+        onComplete={handleTwoFactorComplete}
+        onBack={handleBackToLogin}
+        className={className}
+      />
+    )
   }
 
   const handleInputChange = (field: string, value: string | boolean) => {

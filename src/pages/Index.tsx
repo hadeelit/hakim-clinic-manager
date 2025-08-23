@@ -3,13 +3,13 @@ import { toast } from "@/hooks/use-toast"
 
 const Index = () => {
   const handleLogin = (credentials: { username: string; password: string; rememberMe: boolean }) => {
-    // Simulate login logic - replace with actual API call
-    console.log("Login attempt:", credentials)
+    // Simulate initial login logic - replace with actual API call
+    console.log("Initial login attempt:", credentials)
     
     if (credentials.username && credentials.password) {
       toast({
-        title: "تم تسجيل الدخول بنجاح",
-        description: `مرحباً بك، ${credentials.username}`,
+        title: "تم التحقق من بيانات الدخول",
+        description: "يرجى المتابعة للتحقق الثنائي",
       })
     } else {
       toast({
@@ -18,6 +18,15 @@ const Index = () => {
         variant: "destructive"
       })
     }
+  }
+
+  const handleLoginComplete = () => {
+    // This will be called after successful 2FA verification
+    toast({
+      title: "تم تسجيل الدخول بنجاح",
+      description: "مرحباً بك في نظام حكيم كلينك",
+    })
+    // Here you would typically redirect to dashboard or update app state
   }
 
   return (
@@ -32,7 +41,7 @@ const Index = () => {
       
       {/* Main Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
-        <LoginForm onSubmit={handleLogin} />
+        <LoginForm onSubmit={handleLogin} onLoginComplete={handleLoginComplete} />
       </div>
       
       {/* Footer */}
