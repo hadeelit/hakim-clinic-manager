@@ -39,37 +39,34 @@ export function LoginForm({ onSubmit, className }: LoginFormProps) {
 
   return (
     <Card className={cn(
-      "w-full max-w-md mx-auto shadow-medical border-0 bg-card/80 backdrop-blur-sm",
+      "w-full max-w-md mx-auto shadow-medical border-0 bg-white overflow-hidden",
       className
     )}>
-      <CardHeader className="text-center space-y-6 pb-8">
+      {/* Blue Header Section */}
+      <div className="bg-gradient-to-br from-blue-500 to-blue-600 px-8 py-12 text-center text-white">
         <div className="flex flex-col items-center space-y-4">
-          <div className="p-3 rounded-2xl bg-gradient-primary shadow-glow">
+          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
             <img 
               src={logo} 
               alt="HakimClinic Logo" 
-              className="h-16 w-16 object-contain"
+              className="h-10 w-10 object-contain"
             />
           </div>
           <div className="space-y-2">
-            <CardTitle className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              HakimClinic
-            </CardTitle>
-            <CardDescription className="text-lg text-muted-foreground">
-              نظام إدارة العيادات الطبية
-            </CardDescription>
+            <h1 className="text-2xl font-bold">
+              HakimClinic / نظام حكيم كلينك
+            </h1>
+            <p className="text-blue-100 text-sm">
+              مرحباً بك! يرجى تسجيل الدخول إلى حسابك
+            </p>
           </div>
         </div>
-        <div className="flex items-center justify-center space-x-2 space-x-reverse">
-          <Shield className="h-4 w-4 text-success" />
-          <span className="text-sm text-muted-foreground">تسجيل دخول آمن</span>
-        </div>
-      </CardHeader>
+      </div>
       
       <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-6">
+        <CardContent className="px-8 py-8 space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="username" className="text-right text-base font-medium">
+            <Label htmlFor="username" className="text-right text-sm font-medium text-gray-700">
               اسم المستخدم
             </Label>
             <div className="relative">
@@ -78,17 +75,17 @@ export function LoginForm({ onSubmit, className }: LoginFormProps) {
                 type="text"
                 value={formData.username}
                 onChange={(e) => handleInputChange("username", e.target.value)}
-                className="pl-10 pr-12 h-12 text-right bg-input/50 border-input-border focus:border-input-focus transition-smooth"
+                className="h-12 text-right bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 rounded-lg pr-10"
                 placeholder="أدخل اسم المستخدم"
                 required
                 disabled={isLoading}
               />
-              <User className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <User className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-right text-base font-medium">
+            <Label htmlFor="password" className="text-right text-sm font-medium text-gray-700">
               كلمة المرور
             </Label>
             <div className="relative">
@@ -97,16 +94,16 @@ export function LoginForm({ onSubmit, className }: LoginFormProps) {
                 type={showPassword ? "text" : "password"}
                 value={formData.password}
                 onChange={(e) => handleInputChange("password", e.target.value)}
-                className="pl-10 pr-12 h-12 text-right bg-input/50 border-input-border focus:border-input-focus transition-smooth"
+                className="h-12 text-right bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 rounded-lg pl-10 pr-10"
                 placeholder="أدخل كلمة المرور"
                 required
                 disabled={isLoading}
               />
-              <Lock className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Lock className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-smooth"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 disabled={isLoading}
               >
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
@@ -115,47 +112,49 @@ export function LoginForm({ onSubmit, className }: LoginFormProps) {
           </div>
 
           <div className="flex items-center justify-between">
-            <button
-              type="button"
-              className="text-sm text-primary hover:text-primary-light transition-smooth font-medium"
-              disabled={isLoading}
-            >
-              نسيت كلمة المرور؟
-            </button>
             <div className="flex items-center space-x-2 space-x-reverse">
               <Checkbox
                 id="remember"
                 checked={formData.rememberMe}
                 onCheckedChange={(checked) => handleInputChange("rememberMe", !!checked)}
                 disabled={isLoading}
-                className="data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                className="data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500"
               />
               <Label
                 htmlFor="remember"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                className="text-sm text-gray-600 cursor-pointer"
               >
                 تذكرني
               </Label>
             </div>
+            <button
+              type="button"
+              className="text-sm text-blue-500 hover:text-blue-600 font-medium"
+              disabled={isLoading}
+            >
+              نسيت كلمة المرور؟
+            </button>
           </div>
-        </CardContent>
 
-        <CardFooter className="pt-6">
           <Button
             type="submit"
-            className="w-full h-12 bg-gradient-primary hover:shadow-glow transition-bounce text-lg font-medium"
+            className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-base font-medium rounded-lg"
             disabled={isLoading}
           >
             {isLoading ? (
               <div className="flex items-center space-x-2 space-x-reverse">
-                <div className="animate-spin rounded-full h-5 w-5 border-2 border-primary-foreground border-t-transparent"></div>
+                <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
                 <span>جارٍ تسجيل الدخول...</span>
               </div>
             ) : (
               "تسجيل الدخول"
             )}
           </Button>
-        </CardFooter>
+
+          <p className="text-center text-xs text-gray-500 mt-6">
+            تسجيل دخول آمن للتطبيق الطبي الخاص بك فقط
+          </p>
+        </CardContent>
       </form>
     </Card>
   )
