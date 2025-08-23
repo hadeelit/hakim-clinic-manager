@@ -78,12 +78,12 @@ export function LoginForm({ onSubmit, className }: LoginFormProps) {
                 type="text"
                 value={formData.username}
                 onChange={(e) => handleInputChange("username", e.target.value)}
-                className="pl-10 pr-4 h-12 text-right bg-input/50 border-input-border focus:border-input-focus transition-smooth"
+                className="pl-10 pr-12 h-12 text-right bg-input/50 border-input-border focus:border-input-focus transition-smooth"
                 placeholder="أدخل اسم المستخدم"
                 required
                 disabled={isLoading}
               />
-              <User className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <User className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             </div>
           </div>
 
