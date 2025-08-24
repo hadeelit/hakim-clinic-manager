@@ -156,10 +156,7 @@ export function TwoFactorAuth({ userEmail = "user@clinic.com", onComplete, onBac
                     onClick={() => setSelectedMethod(method)}
                   >
                     <RadioGroupItem value={method} id={method} />
-                    <div className="flex-1 flex items-center space-x-3 space-x-reverse">
-                      <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
-                        {getMethodIcon(method)}
-                      </div>
+                    <div className="flex-1 flex items-center justify-between">
                       <div className="flex-1 text-right">
                         <Label htmlFor={method} className="font-medium text-gray-800 cursor-pointer">
                           {getMethodTitle(method)}
@@ -167,6 +164,9 @@ export function TwoFactorAuth({ userEmail = "user@clinic.com", onComplete, onBac
                         <p className="text-sm text-gray-600 mt-1">
                           {getMethodDescription(method)}
                         </p>
+                      </div>
+                      <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
+                        {getMethodIcon(method)}
                       </div>
                     </div>
                   </div>
@@ -181,8 +181,8 @@ export function TwoFactorAuth({ userEmail = "user@clinic.com", onComplete, onBac
                 className="flex-1"
                 disabled={isLoading}
               >
-                <ArrowLeft className="h-4 w-4 ml-2" />
                 رجوع
+                <ArrowLeft className="h-4 w-4 mr-2" />
               </Button>
               <Button
                 onClick={() => handleMethodSelect(selectedMethod)}
@@ -194,7 +194,7 @@ export function TwoFactorAuth({ userEmail = "user@clinic.com", onComplete, onBac
                 ) : (
                   <>
                     متابعة
-                    <ArrowRight className="h-4 w-4 mr-2" />
+                    <ArrowRight className="h-4 w-4 ml-2" />
                   </>
                 )}
               </Button>
@@ -277,8 +277,8 @@ export function TwoFactorAuth({ userEmail = "user@clinic.com", onComplete, onBac
                 className="flex-1"
                 disabled={isLoading}
               >
-                <ArrowLeft className="h-4 w-4 ml-2" />
                 تغيير الطريقة
+                <ArrowLeft className="h-4 w-4 mr-2" />
               </Button>
               <Button
                 onClick={handleCodeVerification}
@@ -297,25 +297,25 @@ export function TwoFactorAuth({ userEmail = "user@clinic.com", onComplete, onBac
             <div className="border-t pt-4">
               <p className="text-center text-sm text-gray-600 mb-3">طرق بديلة للتحقق</p>
               <div className="flex justify-center space-x-4 space-x-reverse">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => handleMethodSelect('backup')}
-                  className="text-gray-600"
-                >
-                  <Key className="h-4 w-4 ml-1" />
-                  رموز الاحتياط
-                </Button>
-                {selectedMethod !== 'authenticator' && (
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => handleMethodSelect('authenticator')}
+                    onClick={() => handleMethodSelect('backup')}
                     className="text-gray-600"
                   >
-                    <QrCode className="h-4 w-4 ml-1" />
-                    تطبيق المصادقة
+                    رموز الاحتياط
+                    <Key className="h-4 w-4 mr-1" />
                   </Button>
+                {selectedMethod !== 'authenticator' && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleMethodSelect('authenticator')}
+                      className="text-gray-600"
+                    >
+                      تطبيق المصادقة
+                      <QrCode className="h-4 w-4 mr-1" />
+                    </Button>
                 )}
               </div>
             </div>
