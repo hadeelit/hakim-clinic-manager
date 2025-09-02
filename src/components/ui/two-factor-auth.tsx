@@ -194,7 +194,7 @@ export function TwoFactorAuth({ userEmail = "user@clinic.com", onComplete, onBac
                 ) : (
                   <>
                     متابعة
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                    <ArrowLeft className="h-4 w-4 ml-2" />
                   </>
                 )}
               </Button>
