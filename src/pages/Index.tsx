@@ -26,7 +26,8 @@ const Index = () => {
       title: "تم تسجيل الدخول بنجاح",
       description: "مرحباً بك في نظام حكيم كلينك",
     })
-    // Here you would typically redirect to dashboard or update app state
+    // Redirect to dashboard after successful login
+    window.location.href = '/dashboard'
   }
 
   return (
