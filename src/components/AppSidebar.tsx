@@ -159,7 +159,7 @@ export function AppSidebar() {
       : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
 
   return (
-    <Sidebar className={isCollapsed ? 'w-16' : 'w-80'} collapsible="icon">
+    <Sidebar side="right" className={isCollapsed ? 'w-16' : 'w-80'} collapsible="icon">
       <SidebarContent className="px-2 py-4">
         {/* User Profile */}
         {!isCollapsed && (
