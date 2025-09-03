@@ -77,7 +77,7 @@ const menuItems = [
       { title: 'إدارة ملفات المرضى', url: '/patient-files', icon: FolderOpen },
       { title: 'جلسات المريض', url: '/patient-sessions', icon: Clock },
       { title: 'إدارة الفواتير', url: '/invoices', icon: CreditCard },
-      { title: 'عرض الفواتير المحدودة', url: '/limited-invoices', icon: Archive }
+      { title: 'عرض الفواتير المحذوفة', url: '/deleted-invoices', icon: Archive }
     ]
   },
   {
