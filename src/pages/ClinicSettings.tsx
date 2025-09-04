@@ -1,43 +1,28 @@
-import { useState } from 'react'
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import { AppSidebar } from '@/components/AppSidebar'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
-import { 
-  Building2, 
-  Upload, 
-  Plus, 
-  Trash2, 
-  Edit, 
-  RotateCcw, 
-  Save,
-  Phone,
-  MapPin,
-  FileImage,
-  Settings,
-  Shield,
-  MessageSquare,
-  CreditCard
-} from 'lucide-react'
-import { useToast } from '@/hooks/use-toast'
-
+import { useState } from 'react';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/AppSidebar';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { Building2, Upload, Plus, Trash2, Edit, RotateCcw, Save, Phone, MapPin, FileImage, Settings, Shield, MessageSquare, CreditCard } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 interface ClinicInfo {
-  name: string
-  address: string
-  phone: string
-  appointmentNumber: string
-  logo: File | null
-  headerImage: File | null
+  name: string;
+  address: string;
+  phone: string;
+  appointmentNumber: string;
+  logo: File | null;
+  headerImage: File | null;
 }
-
 export default function ClinicSettings() {
-  const { toast } = useToast()
+  const {
+    toast
+  } = useToast();
   const [clinicInfo, setClinicInfo] = useState<ClinicInfo>({
     name: 'عيادة الدكتور أحمد حكيم',
     address: 'شارع الملك عبدالعزيز، الرياض، المملكة العربية السعودية',
@@ -45,32 +30,33 @@ export default function ClinicSettings() {
     appointmentNumber: '19999',
     logo: null,
     headerImage: null
-  })
-
-  const [isEditing, setIsEditing] = useState(false)
-
+  });
+  const [isEditing, setIsEditing] = useState(false);
   const handleInputChange = (field: keyof ClinicInfo, value: string) => {
-    setClinicInfo(prev => ({ ...prev, [field]: value }))
-  }
-
+    setClinicInfo(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
   const handleFileUpload = (field: 'logo' | 'headerImage', file: File | null) => {
-    setClinicInfo(prev => ({ ...prev, [field]: file }))
+    setClinicInfo(prev => ({
+      ...prev,
+      [field]: file
+    }));
     if (file) {
       toast({
         title: "تم رفع الملف بنجاح",
-        description: `تم رفع ${field === 'logo' ? 'شعار العيادة' : 'ترويسة ملف الطباعة'} بنجاح`,
-      })
+        description: `تم رفع ${field === 'logo' ? 'شعار العيادة' : 'ترويسة ملف الطباعة'} بنجاح`
+      });
     }
-  }
-
+  };
   const handleSave = () => {
-    setIsEditing(false)
+    setIsEditing(false);
     toast({
       title: "تم حفظ البيانات",
-      description: "تم حفظ معلومات العيادة بنجاح",
-    })
-  }
-
+      description: "تم حفظ معلومات العيادة بنجاح"
+    });
+  };
   const handleReset = () => {
     setClinicInfo({
       name: '',
@@ -79,15 +65,14 @@ export default function ClinicSettings() {
       appointmentNumber: '',
       logo: null,
       headerImage: null
-    })
+    });
     toast({
       title: "تم مسح البيانات",
-      description: "تم مسح جميع البيانات من النموذج",
-    })
-  }
-
+      description: "تم مسح جميع البيانات من النموذج"
+    });
+  };
   const handleAdd = () => {
-    setIsEditing(true)
+    setIsEditing(true);
     setClinicInfo({
       name: '',
       address: '',
@@ -95,11 +80,9 @@ export default function ClinicSettings() {
       appointmentNumber: '',
       logo: null,
       headerImage: null
-    })
-  }
-
-  return (
-    <SidebarProvider>
+    });
+  };
+  return <SidebarProvider>
       <div className="flex min-h-screen w-full bg-gradient-subtle">
         <AppSidebar />
         
@@ -169,52 +152,30 @@ export default function ClinicSettings() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-3">
-                        <Button 
-                          onClick={handleAdd}
-                          className="w-full justify-start gap-2"
-                          variant="default"
-                        >
+                        <Button onClick={handleAdd} className="w-full justify-start gap-2" variant="default">
                           <Plus className="h-4 w-4" />
                           إضافة
                         </Button>
                         
-                        <Button 
-                          onClick={() => setIsEditing(!isEditing)}
-                          className="w-full justify-start gap-2"
-                          variant="outline"
-                        >
+                        <Button onClick={() => setIsEditing(!isEditing)} className="w-full justify-start gap-2" variant="outline">
                           <Edit className="h-4 w-4" />
                           تعديل
                         </Button>
                         
-                        <Button 
-                          onClick={handleReset}
-                          className="w-full justify-start gap-2"
-                          variant="outline"
-                        >
+                        <Button onClick={handleReset} className="w-full justify-start gap-2" variant="outline">
                           <RotateCcw className="h-4 w-4" />
                           مسح
                         </Button>
                         
-                        <Button 
-                          onClick={handleReset}
-                          className="w-full justify-start gap-2"
-                          variant="destructive"
-                        >
+                        <Button onClick={handleReset} className="w-full justify-start gap-2" variant="destructive">
                           <Trash2 className="h-4 w-4" />
                           حذف
                         </Button>
 
-                        {isEditing && (
-                          <Button 
-                            onClick={handleSave}
-                            className="w-full justify-start gap-2 mt-4"
-                            variant="default"
-                          >
+                        {isEditing && <Button onClick={handleSave} className="w-full justify-start gap-2 mt-4" variant="default">
                             <Save className="h-4 w-4" />
                             حفظ التغييرات
-                          </Button>
-                        )}
+                          </Button>}
                       </CardContent>
                     </Card>
 
@@ -236,14 +197,7 @@ export default function ClinicSettings() {
                             <Label htmlFor="clinic-name" className="text-sm font-medium">
                               اسم العيادة
                             </Label>
-                            <Input
-                              id="clinic-name"
-                              value={clinicInfo.name}
-                              onChange={(e) => handleInputChange('name', e.target.value)}
-                              disabled={!isEditing}
-                              className="bg-input"
-                              placeholder="أدخل اسم العيادة"
-                            />
+                            <Input id="clinic-name" value={clinicInfo.name} onChange={e => handleInputChange('name', e.target.value)} disabled={!isEditing} className="bg-input" placeholder="أدخل اسم العيادة" />
                           </div>
 
                           <div className="space-y-2">
@@ -251,15 +205,7 @@ export default function ClinicSettings() {
                               <Phone className="h-4 w-4" />
                               رقم الجوال
                             </Label>
-                            <Input
-                              id="phone"
-                              value={clinicInfo.phone}
-                              onChange={(e) => handleInputChange('phone', e.target.value)}
-                              disabled={!isEditing}
-                              className="bg-input"
-                              placeholder="+966501234567"
-                              dir="ltr"
-                            />
+                            <Input id="phone" value={clinicInfo.phone} onChange={e => handleInputChange('phone', e.target.value)} disabled={!isEditing} className="bg-input" placeholder="+966501234567" dir="ltr" />
                           </div>
                         </div>
 
@@ -268,28 +214,12 @@ export default function ClinicSettings() {
                             <MapPin className="h-4 w-4" />
                             عنوان العيادة
                           </Label>
-                          <Textarea
-                            id="address"
-                            value={clinicInfo.address}
-                            onChange={(e) => handleInputChange('address', e.target.value)}
-                            disabled={!isEditing}
-                            className="bg-input min-h-[80px]"
-                            placeholder="أدخل العنوان الكامل للعيادة"
-                          />
+                          <Textarea id="address" value={clinicInfo.address} onChange={e => handleInputChange('address', e.target.value)} disabled={!isEditing} className="bg-input min-h-[80px]" placeholder="أدخل العنوان الكامل للعيادة" />
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="appointment-number" className="text-sm font-medium">
-                            رقم أبوعاد العيادة
-                          </Label>
-                          <Input
-                            id="appointment-number"
-                            value={clinicInfo.appointmentNumber}
-                            onChange={(e) => handleInputChange('appointmentNumber', e.target.value)}
-                            disabled={!isEditing}
-                            className="bg-input"
-                            placeholder="19999"
-                          />
+                          <Label htmlFor="appointment-number" className="text-sm font-medium">عدد الفروع</Label>
+                          <Input id="appointment-number" value={clinicInfo.appointmentNumber} onChange={e => handleInputChange('appointmentNumber', e.target.value)} disabled={!isEditing} className="bg-input" placeholder="19999" />
                         </div>
 
                         <Separator />
@@ -306,38 +236,29 @@ export default function ClinicSettings() {
                                 رقع ترويسة ملف الطباعة
                               </Label>
                               <div className="border-2 border-dashed border-border rounded-lg p-6 text-center bg-muted/20">
-                                {clinicInfo.headerImage ? (
-                                  <div className="space-y-2">
+                                {clinicInfo.headerImage ? <div className="space-y-2">
                                     <FileImage className="h-8 w-8 mx-auto text-primary" />
                                     <p className="text-sm font-medium">{clinicInfo.headerImage.name}</p>
                                     <p className="text-xs text-muted-foreground">
                                       {Math.round(clinicInfo.headerImage.size / 1024)} كيلوبايت
                                     </p>
-                                  </div>
-                                ) : (
-                                  <div className="space-y-2">
+                                  </div> : <div className="space-y-2">
                                     <Upload className="h-8 w-8 mx-auto text-muted-foreground" />
                                     <p className="text-sm text-muted-foreground">
                                       اسحب الملف هنا أو انقر للاختيار
                                     </p>
-                                  </div>
-                                )}
+                                  </div>}
                                 
-                                <Button
-                                  variant="outline"
-                                  className="mt-3"
-                                  disabled={!isEditing}
-                                  onClick={() => {
-                                    const input = document.createElement('input')
-                                    input.type = 'file'
-                                    input.accept = 'image/*'
-                                    input.onchange = (e) => {
-                                      const file = (e.target as HTMLInputElement).files?.[0]
-                                      if (file) handleFileUpload('headerImage', file)
-                                    }
-                                    input.click()
-                                  }}
-                                >
+                                <Button variant="outline" className="mt-3" disabled={!isEditing} onClick={() => {
+                                const input = document.createElement('input');
+                                input.type = 'file';
+                                input.accept = 'image/*';
+                                input.onchange = e => {
+                                  const file = (e.target as HTMLInputElement).files?.[0];
+                                  if (file) handleFileUpload('headerImage', file);
+                                };
+                                input.click();
+                              }}>
                                   <Upload className="h-4 w-4 ml-2" />
                                   تحميل
                                 </Button>
@@ -351,38 +272,29 @@ export default function ClinicSettings() {
                                 شعار العيادة
                               </Label>
                               <div className="border-2 border-dashed border-border rounded-lg p-6 text-center bg-muted/20">
-                                {clinicInfo.logo ? (
-                                  <div className="space-y-2">
+                                {clinicInfo.logo ? <div className="space-y-2">
                                     <FileImage className="h-8 w-8 mx-auto text-primary" />
                                     <p className="text-sm font-medium">{clinicInfo.logo.name}</p>
                                     <p className="text-xs text-muted-foreground">
                                       {Math.round(clinicInfo.logo.size / 1024)} كيلوبايت
                                     </p>
-                                  </div>
-                                ) : (
-                                  <div className="space-y-2">
+                                  </div> : <div className="space-y-2">
                                     <Upload className="h-8 w-8 mx-auto text-muted-foreground" />
                                     <p className="text-sm text-muted-foreground">
                                       اسحب الملف هنا أو انقر للاختيار
                                     </p>
-                                  </div>
-                                )}
+                                  </div>}
                                 
-                                <Button
-                                  variant="outline"
-                                  className="mt-3"
-                                  disabled={!isEditing}
-                                  onClick={() => {
-                                    const input = document.createElement('input')
-                                    input.type = 'file'
-                                    input.accept = 'image/*'
-                                    input.onchange = (e) => {
-                                      const file = (e.target as HTMLInputElement).files?.[0]
-                                      if (file) handleFileUpload('logo', file)
-                                    }
-                                    input.click()
-                                  }}
-                                >
+                                <Button variant="outline" className="mt-3" disabled={!isEditing} onClick={() => {
+                                const input = document.createElement('input');
+                                input.type = 'file';
+                                input.accept = 'image/*';
+                                input.onchange = e => {
+                                  const file = (e.target as HTMLInputElement).files?.[0];
+                                  if (file) handleFileUpload('logo', file);
+                                };
+                                input.click();
+                              }}>
                                   <Upload className="h-4 w-4 ml-2" />
                                   تحميل
                                 </Button>
@@ -442,6 +354,5 @@ export default function ClinicSettings() {
           </main>
         </div>
       </div>
-    </SidebarProvider>
-  )
+    </SidebarProvider>;
 }
