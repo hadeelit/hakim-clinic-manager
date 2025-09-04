@@ -194,14 +194,15 @@ export default function ClinicSettings() {
                         {/* Basic Information */}
                         <div className="grid gap-6 md:grid-cols-2">
                           <div className="space-y-2">
-                            <Label htmlFor="clinic-name" className="text-sm font-medium">
+                            <Label htmlFor="clinic-name" className="text-sm font-medium text-right flex items-center gap-2">
+                              <Building2 className="h-4 w-4" />
                               اسم العيادة
                             </Label>
                             <Input id="clinic-name" value={clinicInfo.name} onChange={e => handleInputChange('name', e.target.value)} disabled={!isEditing} className="bg-input" placeholder="أدخل اسم العيادة" />
                           </div>
 
                           <div className="space-y-2">
-                            <Label htmlFor="phone" className="text-sm font-medium flex items-center gap-2">
+                            <Label htmlFor="phone" className="text-sm font-medium text-right flex items-center gap-2">
                               <Phone className="h-4 w-4" />
                               رقم الجوال
                             </Label>
@@ -210,7 +211,7 @@ export default function ClinicSettings() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="address" className="text-sm font-medium flex items-center gap-2">
+                          <Label htmlFor="address" className="text-sm font-medium text-right flex items-center gap-2">
                             <MapPin className="h-4 w-4" />
                             عنوان العيادة
                           </Label>
@@ -218,7 +219,10 @@ export default function ClinicSettings() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="appointment-number" className="text-sm font-medium">عدد الفروع</Label>
+                          <Label htmlFor="appointment-number" className="text-sm font-medium text-right flex items-center gap-2">
+                            <Building2 className="h-4 w-4" />
+                            عدد الفروع
+                          </Label>
                           <Input id="appointment-number" value={clinicInfo.appointmentNumber} onChange={e => handleInputChange('appointmentNumber', e.target.value)} disabled={!isEditing} className="bg-input" placeholder="19999" />
                         </div>
 
@@ -231,7 +235,7 @@ export default function ClinicSettings() {
                           <div className="grid gap-6 md:grid-cols-2">
                             {/* Logo Upload */}
                             <div className="space-y-4">
-                              <Label className="text-sm font-medium flex items-center gap-2">
+                              <Label className="text-sm font-medium text-right flex items-center gap-2">
                                 <FileImage className="h-4 w-4" />
                                 رقع ترويسة ملف الطباعة
                               </Label>
@@ -267,7 +271,7 @@ export default function ClinicSettings() {
 
                             {/* Header Image Upload */}
                             <div className="space-y-4">
-                              <Label className="text-sm font-medium flex items-center gap-2">
+                              <Label className="text-sm font-medium text-right flex items-center gap-2">
                                 <FileImage className="h-4 w-4" />
                                 شعار العيادة
                               </Label>
