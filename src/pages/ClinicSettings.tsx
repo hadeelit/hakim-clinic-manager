@@ -109,7 +109,7 @@ export default function ClinicSettings() {
           </header>
 
           {/* Main Content */}
-          <main className="container mx-auto p-6 space-y-6">
+          <main dir="rtl" className="container mx-auto p-6 space-y-6 text-right">
             <div className="grid gap-6">
               {/* Page Title & Description */}
               <div className="space-y-2">
@@ -194,7 +194,7 @@ export default function ClinicSettings() {
                         {/* Basic Information */}
                         <div className="grid gap-6 md:grid-cols-2">
                           <div className="space-y-2">
-                            <Label htmlFor="clinic-name" className="text-sm font-medium text-right flex items-center gap-2">
+                            <Label htmlFor="clinic-name" className="text-sm font-medium text-right flex items-center justify-end gap-2">
                               <Building2 className="h-4 w-4" />
                               اسم العيادة
                             </Label>
@@ -202,7 +202,7 @@ export default function ClinicSettings() {
                           </div>
 
                           <div className="space-y-2">
-                            <Label htmlFor="phone" className="text-sm font-medium text-right flex items-center gap-2">
+                            <Label htmlFor="phone" className="text-sm font-medium text-right flex items-center justify-end gap-2">
                               <Phone className="h-4 w-4" />
                               رقم الجوال
                             </Label>
@@ -211,7 +211,7 @@ export default function ClinicSettings() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="address" className="text-sm font-medium text-right flex items-center gap-2">
+                          <Label htmlFor="address" className="text-sm font-medium text-right flex items-center justify-end gap-2">
                             <MapPin className="h-4 w-4" />
                             عنوان العيادة
                           </Label>
@@ -219,7 +219,7 @@ export default function ClinicSettings() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="appointment-number" className="text-sm font-medium text-right flex items-center gap-2">
+                          <Label htmlFor="appointment-number" className="text-sm font-medium text-right flex items-center justify-end gap-2">
                             <Building2 className="h-4 w-4" />
                             عدد الفروع
                           </Label>
@@ -235,7 +235,7 @@ export default function ClinicSettings() {
                           <div className="grid gap-6 md:grid-cols-2">
                             {/* Logo Upload */}
                             <div className="space-y-4">
-                              <Label className="text-sm font-medium text-right flex items-center gap-2">
+                              <Label className="text-sm font-medium text-right flex items-center justify-end gap-2">
                                 <FileImage className="h-4 w-4" />
                                 رقع ترويسة ملف الطباعة
                               </Label>
@@ -253,7 +253,7 @@ export default function ClinicSettings() {
                                     </p>
                                   </div>}
                                 
-                                <Button variant="outline" className="mt-3" disabled={!isEditing} onClick={() => {
+                                <Button variant="outline" className="mt-3 justify-end gap-2" disabled={!isEditing} onClick={() => {
                                 const input = document.createElement('input');
                                 input.type = 'file';
                                 input.accept = 'image/*';
@@ -263,7 +263,7 @@ export default function ClinicSettings() {
                                 };
                                 input.click();
                               }}>
-                                  <Upload className="h-4 w-4 ml-2" />
+                                  <Upload className="h-4 w-4" />
                                   تحميل
                                 </Button>
                               </div>
@@ -271,7 +271,7 @@ export default function ClinicSettings() {
 
                             {/* Header Image Upload */}
                             <div className="space-y-4">
-                              <Label className="text-sm font-medium text-right flex items-center gap-2">
+                              <Label className="text-sm font-medium text-right flex items-center justify-end gap-2">
                                 <FileImage className="h-4 w-4" />
                                 شعار العيادة
                               </Label>
@@ -289,7 +289,7 @@ export default function ClinicSettings() {
                                     </p>
                                   </div>}
                                 
-                                <Button variant="outline" className="mt-3" disabled={!isEditing} onClick={() => {
+                                <Button variant="outline" className="mt-3 justify-end gap-2" disabled={!isEditing} onClick={() => {
                                 const input = document.createElement('input');
                                 input.type = 'file';
                                 input.accept = 'image/*';
@@ -299,7 +299,7 @@ export default function ClinicSettings() {
                                 };
                                 input.click();
                               }}>
-                                  <Upload className="h-4 w-4 ml-2" />
+                                  <Upload className="h-4 w-4" />
                                   تحميل
                                 </Button>
                               </div>
