@@ -182,7 +182,7 @@ export default function ClinicSettings() {
                     {/* Clinic Information Form */}
                     <Card className="lg:col-span-3">
                       <CardHeader>
-                        <CardTitle className="text-xl flex items-center gap-2">
+                        <CardTitle className="text-xl flex items-center justify-end gap-2 text-right">
                           <Building2 className="h-5 w-5 text-primary" />
                           معلومات العيادة
                         </CardTitle>
