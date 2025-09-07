@@ -152,27 +152,27 @@ export default function ClinicSettings() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-3">
-                        <Button onClick={handleAdd} className="w-full justify-start gap-2" variant="default">
+                        <Button onClick={handleAdd} className="w-full justify-center gap-2" variant="default">
                           <Plus className="h-4 w-4" />
                           إضافة
                         </Button>
                         
-                        <Button onClick={() => setIsEditing(!isEditing)} className="w-full justify-start gap-2" variant="outline">
+                        <Button onClick={() => setIsEditing(!isEditing)} className="w-full justify-center gap-2" variant="outline">
                           <Edit className="h-4 w-4" />
                           تعديل
                         </Button>
                         
-                        <Button onClick={handleReset} className="w-full justify-start gap-2" variant="outline">
+                        <Button onClick={handleReset} className="w-full justify-center gap-2" variant="outline">
                           <RotateCcw className="h-4 w-4" />
                           مسح
                         </Button>
                         
-                        <Button onClick={handleReset} className="w-full justify-start gap-2" variant="destructive">
+                        <Button onClick={handleReset} className="w-full justify-center gap-2" variant="destructive">
                           <Trash2 className="h-4 w-4" />
                           حذف
                         </Button>
 
-                        {isEditing && <Button onClick={handleSave} className="w-full justify-start gap-2 mt-4" variant="default">
+                        {isEditing && <Button onClick={handleSave} className="w-full justify-center gap-2 mt-4" variant="default">
                             <Save className="h-4 w-4" />
                             حفظ التغييرات
                           </Button>}
