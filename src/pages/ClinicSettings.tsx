@@ -223,7 +223,7 @@ export default function ClinicSettings() {
                             <Building2 className="h-4 w-4" />
                             عدد الفروع
                           </Label>
-                          <Input id="appointment-number" value={clinicInfo.appointmentNumber} onChange={e => handleInputChange('appointmentNumber', e.target.value)} disabled={!isEditing} className="bg-input text-right" placeholder="19999" />
+                          <Input type="number" id="appointment-number" value={clinicInfo.appointmentNumber} onChange={e => handleInputChange('appointmentNumber', e.target.value)} disabled={!isEditing} className="bg-input text-right" placeholder="19999" />
                         </div>
 
                         <Separator />
