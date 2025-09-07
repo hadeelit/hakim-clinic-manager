@@ -198,7 +198,7 @@ export default function ClinicSettings() {
                               <Building2 className="h-4 w-4" />
                               اسم العيادة
                             </Label>
-                            <Input id="clinic-name" value={clinicInfo.name} onChange={e => handleInputChange('name', e.target.value)} disabled={!isEditing} className="bg-input" placeholder="أدخل اسم العيادة" />
+                            <Input id="clinic-name" value={clinicInfo.name} onChange={e => handleInputChange('name', e.target.value)} disabled={!isEditing} className="bg-input text-right" placeholder="أدخل اسم العيادة" />
                           </div>
 
                           <div className="space-y-2">
@@ -206,7 +206,7 @@ export default function ClinicSettings() {
                               <Phone className="h-4 w-4" />
                               رقم الجوال
                             </Label>
-                            <Input id="phone" value={clinicInfo.phone} onChange={e => handleInputChange('phone', e.target.value)} disabled={!isEditing} className="bg-input" placeholder="+966501234567" dir="ltr" />
+                            <Input id="phone" value={clinicInfo.phone} onChange={e => handleInputChange('phone', e.target.value)} disabled={!isEditing} className="bg-input text-right" placeholder="+966501234567" dir="ltr" />
                           </div>
                         </div>
 
@@ -215,7 +215,7 @@ export default function ClinicSettings() {
                             <MapPin className="h-4 w-4" />
                             عنوان العيادة
                           </Label>
-                          <Textarea id="address" value={clinicInfo.address} onChange={e => handleInputChange('address', e.target.value)} disabled={!isEditing} className="bg-input min-h-[80px]" placeholder="أدخل العنوان الكامل للعيادة" />
+                          <Textarea id="address" value={clinicInfo.address} onChange={e => handleInputChange('address', e.target.value)} disabled={!isEditing} className="bg-input min-h-[80px] text-right" placeholder="أدخل العنوان الكامل للعيادة" />
                         </div>
 
                         <div className="space-y-2">
@@ -223,7 +223,7 @@ export default function ClinicSettings() {
                             <Building2 className="h-4 w-4" />
                             عدد الفروع
                           </Label>
-                          <Input id="appointment-number" value={clinicInfo.appointmentNumber} onChange={e => handleInputChange('appointmentNumber', e.target.value)} disabled={!isEditing} className="bg-input" placeholder="19999" />
+                          <Input id="appointment-number" value={clinicInfo.appointmentNumber} onChange={e => handleInputChange('appointmentNumber', e.target.value)} disabled={!isEditing} className="bg-input text-right" placeholder="19999" />
                         </div>
 
                         <Separator />
