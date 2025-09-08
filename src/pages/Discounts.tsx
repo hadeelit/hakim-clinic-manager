@@ -219,10 +219,10 @@ export default function Discounts() {
                       قم بإدارة تخفيضات العيادة والعروض الخاصة
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-6">
+                  <CardContent className="space-y-6 text-right">
                     {/* Form Fields */}
                     <div className="grid gap-6 md:grid-cols-2">
-                      <div className="space-y-2">
+                      <div className="space-y-2 text-right">
                         <Label htmlFor="total-price" className="text-sm font-medium text-right flex items-center justify-end gap-2">
                           <CreditCard className="h-4 w-4" />
                           السعر الإجمالي المدفوع
@@ -238,7 +238,7 @@ export default function Discounts() {
                         />
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="space-y-2 text-right">
                         <Label htmlFor="sessions-count" className="text-sm font-medium text-right flex items-center justify-end gap-2">
                           <Building2 className="h-4 w-4" />
                           عدد الجلسات
@@ -256,7 +256,7 @@ export default function Discounts() {
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2">
-                      <div className="space-y-2">
+                      <div className="space-y-2 text-right">
                         <Label className="text-sm font-medium text-right flex items-center justify-end gap-2">
                           <CalendarIcon className="h-4 w-4" />
                           تاريخ التخفيض
@@ -266,20 +266,20 @@ export default function Discounts() {
                             <Button
                               variant="outline"
                               className={cn(
-                                "w-full justify-start text-right font-normal",
+                                "w-full justify-end text-right font-normal",
                                 !currentDiscount.discountDate && "text-muted-foreground"
                               )}
                               disabled={!isEditingDiscount}
                             >
-                              <CalendarIcon className="mr-2 h-4 w-4" />
                               {currentDiscount.discountDate ? (
                                 format(currentDiscount.discountDate, "PPP", { locale: ar })
                               ) : (
                                 <span className="text-right">اختر تاريخ التخفيض</span>
                               )}
+                              <CalendarIcon className="ml-2 h-4 w-4" />
                             </Button>
                           </PopoverTrigger>
-                          <PopoverContent className="w-auto p-0" align="start">
+                          <PopoverContent className="w-auto p-0" align="end">
                             <Calendar
                               mode="single"
                               selected={currentDiscount.discountDate || undefined}
@@ -291,7 +291,7 @@ export default function Discounts() {
                         </Popover>
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="space-y-2 text-right">
                         <Label htmlFor="discount-percentage" className="text-sm font-medium text-right flex items-center justify-end gap-2">
                           <Percent className="h-4 w-4" />
                           نسبة التخفيض
@@ -309,7 +309,7 @@ export default function Discounts() {
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2">
-                      <div className="space-y-2">
+                      <div className="space-y-2 text-right">
                         <Label htmlFor="start-time" className="text-sm font-medium text-right flex items-center justify-end gap-2">
                           <Clock className="h-4 w-4" />
                           وقت بدء التخفيض
@@ -324,7 +324,7 @@ export default function Discounts() {
                         />
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="space-y-2 text-right">
                         <Label htmlFor="end-time" className="text-sm font-medium text-right flex items-center justify-end gap-2">
                           <Clock className="h-4 w-4" />
                           وقت نهاية التخفيض
@@ -340,7 +340,7 @@ export default function Discounts() {
                       </div>
                     </div>
 
-                    <div className="flex items-center space-x-2 justify-end">
+                    <div className="flex items-center space-x-2 justify-end text-right">
                       <Label htmlFor="discount-clients" className="text-sm font-medium">
                         عملاء تخفيض
                       </Label>
