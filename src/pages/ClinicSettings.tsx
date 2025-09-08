@@ -536,7 +536,7 @@ export default function ClinicSettings() {
                                   {currentDiscount.discountDate ? (
                                     format(currentDiscount.discountDate, "PPP", { locale: ar })
                                   ) : (
-                                    <span>اختر تاريخ التخفيض</span>
+                                    <span className="text-right">اختر تاريخ التخفيض</span>
                                   )}
                                 </Button>
                               </PopoverTrigger>
