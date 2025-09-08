@@ -124,6 +124,7 @@ export default function Discounts() {
       discountStartTime: '',
       discountEndTime: ''
     });
+    setIsEditingDiscount(false);
     toast({
       title: "تم مسح البيانات",
       description: "تم مسح جميع البيانات من النموذج"
@@ -184,9 +185,13 @@ export default function Discounts() {
                       إضافة
                     </Button>
                     
-                    <Button onClick={() => setIsEditingDiscount(!isEditingDiscount)} className="w-full justify-center gap-2" variant="outline">
+                    <Button 
+                      onClick={() => setIsEditingDiscount(!isEditingDiscount)} 
+                      className="w-full justify-center gap-2" 
+                      variant={isEditingDiscount ? "secondary" : "outline"}
+                    >
                       <Edit className="h-4 w-4" />
-                      تعديل
+                      {isEditingDiscount ? "إلغاء التعديل" : "تعديل"}
                     </Button>
                     
                     <Button onClick={handleResetDiscount} className="w-full justify-center gap-2" variant="outline">
@@ -194,7 +199,16 @@ export default function Discounts() {
                       مسح
                     </Button>
                     
-                    <Button onClick={() => {}} className="w-full justify-center gap-2" variant="destructive">
+                    <Button 
+                      onClick={() => {
+                        if (currentDiscount.id) {
+                          handleDeleteDiscount(currentDiscount.id);
+                        }
+                      }} 
+                      className="w-full justify-center gap-2" 
+                      variant="destructive"
+                      disabled={!currentDiscount.id}
+                    >
                       <Trash2 className="h-4 w-4" />
                       حذف
                     </Button>
