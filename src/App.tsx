@@ -10,6 +10,7 @@ import PatientFiles from "./pages/PatientFiles";
 import ClinicSettings from "./pages/ClinicSettings";
 import Discounts from "./pages/Discounts";
 import Privacy from "./pages/Privacy";
+import SMS from "./pages/SMS";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/clinic-info" element={<ClinicSettings />} />
           <Route path="/discounts" element={<Discounts />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/sms" element={<SMS />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

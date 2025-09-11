@@ -732,18 +732,121 @@ export default function ClinicSettings() {
                   </Card>
                 </TabsContent>
 
-                <TabsContent value="sms">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>الرسائل القصيرة</CardTitle>
-                      <CardDescription>
-                        إعدادات الرسائل النصية والإشعارات
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground">هذا القسم قيد التطوير...</p>
-                    </CardContent>
-                  </Card>
+                <TabsContent value="sms" className="mt-6">
+                  <div className="grid gap-6 lg:grid-cols-4">
+                    {/* Action Buttons */}
+                    <Card className="lg:col-span-1">
+                      <CardHeader>
+                        <CardTitle className="text-lg">الإجراءات</CardTitle>
+                        <CardDescription>
+                          إجراءات إدارة الرسائل القصيرة
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <Button 
+                          className="w-full justify-center gap-2" 
+                          variant="default"
+                          onClick={() => {
+                            toast({
+                              title: "تم إرسال الرسالة",
+                              description: "تم إرسال الرسالة بنجاح"
+                            });
+                          }}
+                        >
+                          <MessageSquare className="h-4 w-4" />
+                          إرسال
+                        </Button>
+                        
+                        <Button 
+                          className="w-full justify-center gap-2" 
+                          variant="outline"
+                          onClick={() => {
+                            toast({
+                              title: "رصيد الرسائل",
+                              description: "الرصيد المتاح: 150 رسالة"
+                            });
+                          }}
+                        >
+                          <CreditCard className="h-4 w-4" />
+                          الرصيد
+                        </Button>
+                        
+                        <Button 
+                          className="w-full justify-center gap-2" 
+                          variant="outline"
+                          onClick={() => {
+                            toast({
+                              title: "تم مسح البيانات", 
+                              description: "تم مسح جميع البيانات من النموذج"
+                            });
+                          }}
+                        >
+                          <RotateCcw className="h-4 w-4" />
+                          مسح
+                        </Button>
+
+                        <div className="mt-4 p-3 bg-muted/50 rounded-lg">
+                          <p className="text-sm font-medium text-center">الرصيد المتاح</p>
+                          <p className="text-2xl font-bold text-center text-primary">150</p>
+                          <p className="text-xs text-muted-foreground text-center">رسالة</p>
+                        </div>
+
+                        <div className="flex justify-center pt-4">
+                          <Button 
+                            className="gap-2"
+                            onClick={() => window.open('/sms', '_blank')}
+                          >
+                            <MessageSquare className="h-4 w-4" />
+                            فتح صفحة الرسائل المتقدمة
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* SMS Form */}
+                    <Card className="lg:col-span-3">
+                      <CardHeader>
+                        <CardTitle className="text-xl flex items-center justify-end gap-2 text-right">
+                          <MessageSquare className="h-5 w-5 text-primary" />
+                          رسالة قصيرة SMS
+                        </CardTitle>
+                        <CardDescription>
+                          قم بإدخال رقم الجوال ومحتوى الرسالة
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-6">
+                        {/* Phone Number */}
+                        <div className="space-y-2">
+                          <Label htmlFor="sms-phone-number" className="text-sm font-medium text-right">
+                            رقم الجوال
+                          </Label>
+                          <Input 
+                            id="sms-phone-number" 
+                            className="bg-input text-right" 
+                            placeholder="أدخل رقم الجوال (مثال: +966501234567)" 
+                            dir="ltr" 
+                          />
+                        </div>
+
+                        {/* Message Content */}
+                        <div className="space-y-2">
+                          <Label htmlFor="sms-message-content" className="text-sm font-medium text-right">
+                            محتوى الرسالة
+                          </Label>
+                          <Textarea 
+                            id="sms-message-content" 
+                            className="bg-input min-h-[120px] text-right" 
+                            placeholder="اكتب محتوى الرسالة هنا..."
+                            maxLength={160}
+                          />
+                          <div className="flex justify-between items-center text-xs text-muted-foreground">
+                            <span>160 حرف متبقي</span>
+                            <span>0/160</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </TabsContent>
               </Tabs>
             </div>
