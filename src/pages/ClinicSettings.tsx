@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Switch } from '@/components/ui/switch';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -689,8 +690,44 @@ export default function ClinicSettings() {
                         إعدادات خصوصية وأمان البيانات
                       </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground">هذا القسم قيد التطوير...</p>
+                    <CardContent className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2 text-right">
+                          <Label>فترة الاحتفاظ بالبيانات</Label>
+                          <Input placeholder="5 سنوات" disabled className="text-right" />
+                        </div>
+                        
+                        <div className="space-y-2 text-right">
+                          <Label>مستوى التشفير</Label>
+                          <Input placeholder="AES-256" disabled className="text-right" />
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between p-4 border rounded-lg">
+                        <Switch disabled />
+                        <div className="text-right">
+                          <p className="text-sm font-medium">موافقة المريض مطلوبة</p>
+                          <p className="text-xs text-muted-foreground">يتطلب موافقة صريحة قبل معالجة البيانات</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between p-4 border rounded-lg">
+                        <Switch disabled />
+                        <div className="text-right">
+                          <p className="text-sm font-medium">تشفير البيانات الحساسة</p>
+                          <p className="text-xs text-muted-foreground">حماية البيانات الطبية بالتشفير المتقدم</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex justify-center pt-4">
+                        <Button 
+                          className="gap-2"
+                          onClick={() => window.open('/privacy', '_blank')}
+                        >
+                          <Shield className="h-4 w-4" />
+                          فتح إعدادات الخصوصية المتقدمة
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 </TabsContent>

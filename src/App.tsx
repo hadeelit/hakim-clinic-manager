@@ -9,6 +9,7 @@ import DeletedInvoices from "./pages/DeletedInvoices";
 import PatientFiles from "./pages/PatientFiles";
 import ClinicSettings from "./pages/ClinicSettings";
 import Discounts from "./pages/Discounts";
+import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/patient-files" element={<PatientFiles />} />
           <Route path="/clinic-info" element={<ClinicSettings />} />
           <Route path="/discounts" element={<Discounts />} />
+          <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
