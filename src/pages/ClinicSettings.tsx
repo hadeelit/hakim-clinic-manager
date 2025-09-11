@@ -528,12 +528,12 @@ export default function ClinicSettings() {
                                 <Button
                                   variant="outline"
                                   className={cn(
-                                    "w-full justify-start text-right font-normal",
+                                    "w-full justify-end text-right font-normal flex-row-reverse",
                                     !currentDiscount.discountDate && "text-muted-foreground"
                                   )}
                                   disabled={!isEditingDiscount}
                                 >
-                                  <CalendarIcon className="mr-2 h-4 w-4" />
+                                  <CalendarIcon className="ml-2 h-4 w-4" />
                                   {currentDiscount.discountDate ? (
                                     format(currentDiscount.discountDate, "PPP", { locale: ar })
                                   ) : (
